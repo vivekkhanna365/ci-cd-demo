@@ -3,7 +3,7 @@
 <server>
 <id>ci-cd-credentials</id>
 <username>~~~Client~~~</username>
-<password>${ci-cd-client-id}~?~${ci-cd-client-secret}</password>
+<password>${ci_cd_client_id}~?~${ci_cd_client_secret}</password>
 </server>
 </servers>
 </settings
