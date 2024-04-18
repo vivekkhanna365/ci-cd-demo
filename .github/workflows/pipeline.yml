@@ -44,7 +44,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Build with Maven
         run: |
-          artifactNamel=$(ls target/*.jar | head -1)
+          artifactName1=$(ls target/*.jar | head -1)
           commitHash=$(git rev-parse -short "SGITHUB_SHA")
           artifactName2=$(ls target/*.jar | head -1 | sed "s/ jar/-$commitHash.jar/g*)
           mv $artifactName1 $artifactName2
