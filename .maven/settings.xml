@@ -6,4 +6,4 @@
 <password>${ci_cd_client_id}~?~${ci_cd_client_secret}</password>
 </server>
 </servers>
-</settings
+</settings>
