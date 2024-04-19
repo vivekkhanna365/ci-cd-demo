@@ -25,27 +25,23 @@
 				<version>3.2.0</version>
 			
 				<extensions>true</extensions>
-				<configuration>
-     			<username>vivekkhanna2024</username>
-                <password>Viv1612@</password>
-                <environment>sandbox</environment>
-                <muleVersion>4.5.3</muleVersion>
-                <redeploy>true</redeploy>
-                <businessGroup>828a6890-b5b8-4335-a21c-321fbd5e3848</businessGroup>
-                <region>US-WEST-2</region>
-                <applicationName>ci-cd-poc</applicationName>
-                <targetType>cloudhub</targetType>
-                <workers>1</workers>
-            </configuration>
-            <executions>
-                <execution>
-                    <id>deploy</id>
-                    <phase>deploy</phase>
-                    <goals>
-                        <goal>deploy</goal>
-                    </goals>
-                </execution>
-            </executions>
+				
+     						<configuration>
+    <cloudHubDeployment>
+      <uri>https://anypoint.mulesoft.com</uri>
+      <muleVersion>4.5.3</muleVersion>
+      <connectedAppClientId>5aaf3c735c594605b7799c947b4ffc3c</connectedAppClientId>
+      <connectedAppClientSecret>2B3013C94A7F411e95E65bAc0343b12e</connectedAppClientSecret>
+      <connectedAppGrantType>client_credentials</connectedAppGrantType>
+      <server>ci-cd-credentials</server>
+      <applicationName>doubts-poc</applicationName>
+      <environment>sandbox</environment>
+      <region>US-WEST-2</region>
+      <workers>1</workers>
+      <workerType>MICRO</workerType>
+      <objectStoreV2>true</objectStoreV2>
+    </cloudHubDeployment>
+  </configuration>
 		</plugin>	
 		</plugins>
 	</build>
