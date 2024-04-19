@@ -2,8 +2,8 @@
 <servers>
 <server>
 <id>ci-cd-credentials</id>
-<username>${ci_cd_client_id}</username>
-<password>${ci_cd_client_secret}</password>
+<username>~~~Client~~~</username>
+<password>${ci_cd_client_id}~?~${ci_cd_client_secret}</password>
 </server>
 <servers>
 <server>
