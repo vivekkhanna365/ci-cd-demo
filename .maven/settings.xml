@@ -5,7 +5,6 @@
 <username>~~~Client~~~</username>
 <password>${ci_cd_client_id}~?~${ci_cd_client_secret}</password>
 </server>
-<servers>
 <server>
 <id>anypoint-exchange</id>
 <username>~~~Client~~~</username>
