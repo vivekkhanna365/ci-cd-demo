@@ -60,33 +60,33 @@ jobs:
           path: target/*.jar
       # Runs a set of commands using the runners shell
      
-  upload:
-        needs: build
-        runs-on: ubuntu-latest 
-        env:
-          ci_cd_client_id: ${{secrets.CI_CD_CLIENT_ID}}
-          ci_cd_client_secret: ${{secrets.CI_CD_CLIENT_SECRET}}
-        steps:
-        - uses: actions/checkout@v3
-        - uses: actions/cache@v3
-          with: 
-            path: ~/.m2/repository
-            key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml')}}
-            restore-keys: |
-              ${{runner.os}}-maven-
-        - uses: actions/download-artifact@master
-          with:
-            name: artifacts
-        - name: Upload to exchange
-          run: |
-            artifactName=$(ls *.jar | head -1)
-            mvn deploy \
-            -s .maven/settings.xml \
-            -Dmule.artifact=$artifactName \
+  # upload:
+  #       needs: build
+  #       runs-on: ubuntu-latest 
+  #       env:
+  #         ci_cd_client_id: ${{secrets.CI_CD_CLIENT_ID}}
+  #         ci_cd_client_secret: ${{secrets.CI_CD_CLIENT_SECRET}}
+  #       steps:
+  #       - uses: actions/checkout@v3
+  #       - uses: actions/cache@v3
+  #         with: 
+  #           path: ~/.m2/repository
+  #           key: ${{runner.os}}-maven-${{hashFiles('**/pom.xml')}}
+  #           restore-keys: |
+  #             ${{runner.os}}-maven-
+  #       - uses: actions/download-artifact@master
+  #         with:
+  #           name: artifacts
+  #       - name: Upload to exchange
+  #         run: |
+  #           artifactName=$(ls *.jar | head -1)
+  #           mvn deploy \
+  #           -s .maven/settings.xml \
+  #           -Dmule.artifact=$artifactName \
         
         
   deploy:
-        needs: upload
+        needs: build
         runs-on: ubuntu-latest 
         env:
           ci_cd_client_id: ${{secrets.CI_CD_CLIENT_ID}}
@@ -106,9 +106,7 @@ jobs:
         - name: Deploy to sandbox
           run: |
             artifactName=$(ls *.jar | head -1)
-             mvn deploy -DmuleDeploy \ 
+             mvn deploy -DmuleDeploy \
              -Dmule.artifact=$artifactName \
-             -B .maven/settings.xml \ 
-             -DskipTests \
-             -DskipDeploymentVerification="true"
-  
+             -Dclient.id="$ci_cd_client_id" \
+             -Dclient.secret="$Sci_cd_client_secret" 
