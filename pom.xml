@@ -26,17 +26,19 @@
 			
 				<extensions>true</extensions>
 				
-     						<configuration>
+     <configuration>
+     <classifier>mule-app</classifier>
     <cloudHubDeployment>
       <uri>https://anypoint.mulesoft.com</uri>
       <muleVersion>4.5.3</muleVersion>
+      
       <connectedAppClientId>5aaf3c735c594605b7799c947b4ffc3c</connectedAppClientId>
       <connectedAppClientSecret>2B3013C94A7F411e95E65bAc0343b12e</connectedAppClientSecret>
       <connectedAppGrantType>client_credentials</connectedAppGrantType>
       <server>ci-cd-credentials</server>
       <applicationName>doubts-poc</applicationName>
-      <environment>sandbox</environment>
-      <region>US-WEST-2</region>
+      <environment>Sandbox</environment>
+      <region>us-west-2</region>
       <workers>1</workers>
       <workerType>MICRO</workerType>
       <objectStoreV2>true</objectStoreV2>
@@ -45,13 +47,6 @@
 		</plugin>	
 		</plugins>
 	</build>
-	<distributionManagement>
-        <repository>
-            <id>ci-cd-credentials</id>
-            <name>My Repository</name>
-            <url>https://maven.anypoint.mulesoft.com/api/v1/organizations/${project.groupId}/maven</url>
-        </repository>
-    </distributionManagement>
 
 	<dependencies>
 		<dependency>
@@ -90,6 +85,30 @@
 	</repositories>
 
 	<pluginRepositories>
+	<pluginRepository>
+			<id>mulesoft-enterprise</id>
+			<name>MuleSoft Enterprise Repository</name>
+			<layout>default</layout>
+			<url>https://repository.mulesoft.org/nexus-ee/content/repositories/release-ee/</url>
+			<releases>
+				<enabled>true</enabled>
+				</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+		<id>mule-public</id>
+			<name>MuleSoft Public Repository</name>
+			<layout>default</layout>
+			<url>https://repository.mulesoft.org/nexus-ee/content/repositories/public/</url>
+			<releases>
+				<enabled>true</enabled>
+				</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
 		<pluginRepository>
 			<id>mulesoft-releases</id>
 			<name>MuleSoft Releases Repository</name>
