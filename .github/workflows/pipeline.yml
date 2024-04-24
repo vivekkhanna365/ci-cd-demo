@@ -37,9 +37,9 @@ jobs:
         with:
           servers: |
              [{
-               "id":  "mule-enterprise",
-               "username" :${{secrets.mule_nexus_username}}
-               "password" :${{secrets.mule_nexus_password}}
+               "id":  "maven-releases",
+               "username" :admin
+               "password" :Viv1612@
              }]
       
       
